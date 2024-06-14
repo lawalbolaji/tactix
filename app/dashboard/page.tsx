@@ -56,7 +56,7 @@ export default async function Dashboard() {
                     <div>
                         <div className="flex items-center justify-between my-4">
                             <h2 className="text-2xl font-bold">Job Postings</h2>
-                            <Link href="/jobs/new" className="flex flex-row items-center justify-center">
+                            <Link href="/dashboard/jobs/new" className="flex flex-row items-center justify-center">
                                 <PlusIcon className="w-4 h-4 mr-2" />
                                 Create New Posting
                             </Link>
