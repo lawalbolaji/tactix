@@ -28,15 +28,21 @@ body {
 }
 
 .line-1 {
-    margin: 0 auto;
-    border-right: 2px solid rgba(0, 0, 0, 0.75);
+    border-right: 4px solid rgba(0, 0, 0, 0.75);
     white-space: nowrap;
     overflow: hidden;
 }
 
+@media screen and (max-width: 600px) {
+    .line-1 {
+        border-right: 1px solid rgba(0, 0, 0, 0.75);
+    }
+}
+
 /* Animation */
 .anim-typewriter {
-    animation: typewriter 2s steps(44) 1s 1 normal both, blinkTextCursor 500ms steps(44) infinite normal;
+    animation: typewriter 2s steps(44) 1s 1 normal both, blinkTextCursor 800ms steps(44) infinite normal,
+        removeCursor 0s forwards 4s;
 }
 
 @keyframes typewriter {
@@ -54,5 +60,11 @@ body {
     }
     to {
         border-right-color: transparent;
+    }
+}
+
+@keyframes removeCursor {
+    to {
+        border-right: none;
     }
 }
