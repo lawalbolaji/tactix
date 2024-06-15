@@ -4,7 +4,11 @@ import { Textarea } from "@/components/shared/textarea";
 import { Button } from "@/components/shared/button";
 import { createJobPosting } from "./action";
 
-export default async function NewPostingPage() {
+/* /dashboard/jobs/[id] */
+
+// to create a new job, just pass id of new to this page
+export default async function JobPostingDetailsPage({ params }: { params: { id: string } }) {
+    // check if existing job id exists
     return (
         <main className="flex-1 px-4 md:px-6 py-12">
             <div className="max-w-3xl mx-auto space-y-8">
@@ -16,17 +20,18 @@ export default async function NewPostingPage() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div className="space-y-2">
                             <Label htmlFor="title">Job Title</Label>
-                            <Input id="title" placeholder="Software Engineer" />
+                            <Input id="title" name="title" placeholder="Software Engineer" />
                         </div>
                         <div className="space-y-2">
                             <Label htmlFor="location">Location</Label>
-                            <Input id="location" placeholder="Lagos, Nigeria" />
+                            <Input id="location" name="location" placeholder="Lagos, Nigeria" />
                         </div>
                     </div>
                     <div className="space-y-2">
                         <Label htmlFor="description">Job Description</Label>
                         <Textarea
                             id="description"
+                            name="description"
                             placeholder="Describe the job responsibilities and requirements."
                             rows={6}
                         />
@@ -36,13 +41,14 @@ export default async function NewPostingPage() {
                             <Label htmlFor="qualifications">Required Qualifications</Label>
                             <Textarea
                                 id="qualifications"
+                                name="qualifications"
                                 placeholder="List the required qualifications for this role."
                                 rows={3}
                             />
                         </div>
                         <div className="space-y-2">
                             <Label htmlFor="salary">Salary Range</Label>
-                            <Input id="salary" placeholder="₦8,000,000 - ₦20,000,000" />
+                            <Input id="salary" name="salary" placeholder="₦8,000,000 - ₦20,000,000" />
                         </div>
                     </div>
                     <div className="flex justify-end">

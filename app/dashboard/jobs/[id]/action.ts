@@ -13,7 +13,6 @@ export async function createJobPosting(formData: FormData) {
 
     // save to db
     console.log(payload);
-
     revalidatePath("/dashboard", "layout");
     redirect("/dashboard");
 }
