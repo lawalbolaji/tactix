@@ -6,6 +6,7 @@ import { Button } from "../shared/button";
 import { EyeIcon } from "../shared/icons/eye";
 import { FilePenIcon } from "../shared/icons/filepen";
 import { TrashIcon } from "../shared/icons/trash";
+import Link from "next/link";
 
 export function Postings() {
     const [sortBy, setSortBy] = useState<keyof (typeof jobPostings)[0]>("totalApplicants");
@@ -76,7 +77,9 @@ export function Postings() {
                 <tbody>
                     {sortedJobPostings.map((posting) => (
                         <tr key={posting.id} className="border-b border-gray-200 ">
-                            <td className="px-4 py-3">{posting.title}</td>
+                            <td className="px-4 py-3">
+                                <Link href={`/dashboard/jobs/${posting.id}/applications`}>{posting.title}</Link>
+                            </td>
                             <td className="px-4 py-3">{posting.totalApplicants}</td>
                             <td className="px-4 py-3">{Math.floor(posting.successRate * 100)}%</td>
                             <td className="px-4 py-3">{posting.scheduledInterviews}</td>
@@ -92,10 +95,13 @@ export function Postings() {
                                         <EyeIcon className="w-5 h-5" />
                                         <span className="sr-only">View Posting</span>
                                     </Button>
-                                    <Button variant="ghost" size="icon" className="text-gray-500 hover:text-gray-900 ">
+                                    <Link
+                                        href={`/dashboard/jobs/${posting.id}`}
+                                        className="text-gray-500 hover:text-gray-900 hover:bg-gray-100 h-10 w-10"
+                                    >
                                         <FilePenIcon className="w-5 h-5" />
                                         <span className="sr-only">Edit Posting</span>
-                                    </Button>
+                                    </Link>
                                     <Button variant="ghost" size="icon" className="text-gray-500 hover:text-gray-900 ">
                                         <TrashIcon className="w-5 h-5" />
                                         <span className="sr-only">Delete Posting</span>
