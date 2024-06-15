@@ -24,7 +24,7 @@ export default async function DashboardLayout({
                     <span className="sr-only">Tactix</span>
                 </Link>
                 <nav className="ml-auto flex gap-4 sm:gap-6">
-                    <Link className="text-sm font-medium hover:underline underline-offset-4" href="#">
+                    <Link className="text-sm font-medium hover:underline underline-offset-4" href="/dashboard">
                         Dashboard
                     </Link>
                     <Link className="text-sm font-medium hover:underline underline-offset-4" href="#">
