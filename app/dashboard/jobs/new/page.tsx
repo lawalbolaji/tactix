@@ -12,11 +12,7 @@ export default async function NewPostingPage() {
                     <h1 className="text-3xl font-bold">Create a new job posting</h1>
                     <p className="text-gray-500 ">Fill out the form below to create a new job posting.</p>
                 </div>
-                <form
-                    className="space-y-6"
-                    action="#"
-                    // action={createJobPosting}
-                >
+                <form className="space-y-6" action={createJobPosting}>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div className="space-y-2">
                             <Label htmlFor="title">Job Title</Label>
