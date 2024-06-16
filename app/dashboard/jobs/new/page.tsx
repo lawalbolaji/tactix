@@ -103,16 +103,6 @@ export default async function JobPostingDetailsPage({ params }: { params: { id: 
                         </div>
                     </div>
 
-                    {/* <div className="flex items-center space-x-2">
-                        <Checkbox id="terms" />
-                        <label
-                            htmlFor="terms"
-                            className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                        >
-                            Accept terms and conditions
-                        </label>
-                    </div> */}
-
                     <div className="flex justify-end gap-4">
                         <Button className="w-full sm:w-auto" type="submit">
                             Save
