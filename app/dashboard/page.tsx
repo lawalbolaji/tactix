@@ -1,11 +1,11 @@
 import Link from "next/link";
 import { CardTitle, CardHeader, CardContent, Card } from "@/components/shared/card";
-import { PlusIcon } from "../../components/shared/icons/plus";
-import { BarChart } from "../../components/barchart/barchart";
-import { LineChart } from "../../components/linechart/linechart";
-import { Postings } from "../../components/postings/postings";
-import { createClient } from "../../lib/supabase/server";
-import { Job } from "../../entities/db";
+import { PlusIcon } from "@/components/shared/icons/plus";
+import { BarChart } from "@/components/barchart/barchart";
+import { LineChart } from "@/components/linechart/linechart";
+import { Postings } from "@/components/postings/postings";
+import { createClient } from "@/lib/supabase/server";
+import { Job } from "@/entities/db";
 
 export default async function Dashboard() {
     // load dashboard data

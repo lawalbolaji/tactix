@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { MountainIcon } from "../../components/shared/icons/mountain";
+import { MountainIcon } from "@/components/shared/icons/mountain";
 import { redirect } from "next/navigation";
-import { createClient } from "../../lib/supabase/server";
+import { createClient } from "@/lib/supabase/server";
 import { signOut } from "./action";
 
 export default async function DashboardLayout({

@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { signUp } from "./action";
 
 export default function SignUpPage() {

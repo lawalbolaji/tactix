@@ -3,10 +3,10 @@
 import { Avatar, AvatarImage, AvatarFallback } from "@radix-ui/react-avatar";
 import Link from "next/link";
 import { useState, useMemo } from "react";
-import { Button } from "../../../../../components/shared/button";
-import { FileSearchIcon } from "../../../../../components/shared/icons/filesearch";
-import { StarIcon } from "../../../../../components/shared/icons/star";
-import { applicants } from "../../../../../lib/data";
+import { Button } from "@/components/shared/button";
+import { FileSearchIcon } from "@/components/shared/icons/filesearch";
+import { StarIcon } from "@/components/shared/icons/star";
+import { applicants } from "@/lib/data";
 
 /* /dashboard/jobs/[id]/applications */
 

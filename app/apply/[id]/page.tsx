@@ -1,11 +1,11 @@
-import { Button } from "../../../components/shared/button";
-import { Textarea } from "../../../components/shared/textarea";
-import { Label } from "../../../components/shared/label";
-import { Input } from "../../../components/shared/input";
-import { createClient } from "../../../lib/supabase/server";
+import { Button } from "@/components/shared/button";
+import { Textarea } from "@/components/shared/textarea";
+import { Label } from "@/components/shared/label";
+import { Input } from "@/components/shared/input";
+import { createClient } from "@/lib/supabase/server";
 import { z } from "zod";
 import { notFound } from "next/navigation";
-import { Job } from "../../../entities/db";
+import { Job } from "@/entities/db";
 
 const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
 

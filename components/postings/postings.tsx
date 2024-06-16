@@ -5,7 +5,7 @@ import { EyeIcon } from "../shared/icons/eye";
 import { FilePenIcon } from "../shared/icons/filepen";
 import { TrashIcon } from "../shared/icons/trash";
 import Link from "next/link";
-import { Job } from "../../entities/db";
+import { Job } from "@/entities/db";
 
 export function Postings(props: { jobs: Array<Job> }) {
     // const [sortBy, setSortBy] = useState<keyof (typeof jobPostings)[0]>("totalApplicants");
