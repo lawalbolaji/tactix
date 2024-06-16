@@ -4,13 +4,25 @@ import { PlusIcon } from "../../components/shared/icons/plus";
 import { BarChart } from "../../components/barchart/barchart";
 import { LineChart } from "../../components/linechart/linechart";
 import { Postings } from "../../components/postings/postings";
-
-const totalApplicants = 422;
-const totalScheduledInterviews = 148;
-const successRate = totalScheduledInterviews / totalApplicants;
-const totalOpenPositions = 9;
+import { createClient } from "../../lib/supabase/server";
+import { Job } from "../../entities/db";
 
 export default async function Dashboard() {
+    // load dashboard data
+
+    /* will fetch this from database eventually */
+    const totalApplicants = 422;
+    const totalScheduledInterviews = 148;
+    const successRate = totalScheduledInterviews / totalApplicants;
+    const totalOpenPositions = 9;
+
+    /* fetch job applications */
+    const supabase = createClient();
+    const { data: jobs, error: dbError } = await supabase.from("jobs").select().range(0, 5);
+
+    /* TODO: check route-segments to show an empty page for the postings table for this scenario */
+    if (!jobs) console.log(dbError);
+
     return (
         <div className="flex flex-1">
             <main className="flex-1 px-4 md:px-6 py-12">
@@ -80,7 +92,7 @@ export default async function Dashboard() {
                             </Card>
                         </div>
 
-                        <Postings />
+                        <Postings jobs={(jobs ?? []) as Array<Job>} />
                     </div>
                 </div>
             </main>

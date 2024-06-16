@@ -83,6 +83,7 @@ export default function ApplicationsPage({ params }: { params: { id: string } })
                                     </Button>
                                 </div>
                             </div>
+
                             <div className="bg-gray-100 rounded-lg p-4 md:p-6 flex flex-col items-start gap-4">
                                 <div className="flex items-center gap-4">
                                     <Avatar>
@@ -116,6 +117,7 @@ export default function ApplicationsPage({ params }: { params: { id: string } })
                                     </Link>
                                 </div>
                             </div>
+
                             <div className="bg-gray-100 rounded-lg p-4 md:p-6 flex flex-col items-start gap-4">
                                 <div className="flex items-center gap-4">
                                     <Avatar>
@@ -147,6 +149,7 @@ export default function ApplicationsPage({ params }: { params: { id: string } })
                                 </div>
                             </div>
                         </div>
+
                         <div className="flex justify-center">
                             <Link
                                 href="#"
