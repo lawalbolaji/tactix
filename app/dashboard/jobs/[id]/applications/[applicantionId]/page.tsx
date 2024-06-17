@@ -86,7 +86,8 @@ export default function ApplicationDetailsPage({ params }: { params: { id: strin
                             width={400}
                         />
                         <Button className="my-4" size="sm" variant="outline">
-                            Preview CV
+                            {/* TODO: add preview functionality later */}
+                            Download CV
                         </Button>
                     </div>
                 </div>
