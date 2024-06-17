@@ -1,6 +1,6 @@
-import { JSX, SVGProps } from "react";
+import { SVGProps } from "react";
 
-export function UserIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
+export function ChevronDownIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
     return (
         <svg
             {...props}
@@ -14,8 +14,7 @@ export function UserIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement
             strokeLinecap="round"
             strokeLinejoin="round"
         >
-            <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
-            <circle cx="12" cy="7" r="4" />
+            <path d="m6 9 6 6 6-6" />
         </svg>
     );
 }

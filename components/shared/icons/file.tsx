@@ -1,6 +1,6 @@
 import { JSX, SVGProps } from "react";
 
-export function UserIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
+export function FileIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
     return (
         <svg
             {...props}
@@ -14,8 +14,8 @@ export function UserIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement
             strokeLinecap="round"
             strokeLinejoin="round"
         >
-            <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
-            <circle cx="12" cy="7" r="4" />
+            <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
+            <path d="M14 2v4a2 2 0 0 0 2 2h4" />
         </svg>
     );
 }
