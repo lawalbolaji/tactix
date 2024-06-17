@@ -11,4 +11,15 @@ export type Job = {
     /* we need to add total_applicants, and other columns we want to sort by in the UI */
 };
 
-export type Application = {};
+export type Application = {
+    id: number;
+    name: string;
+    email: string;
+    phone: string;
+    resume: string;
+    coverLetter: string;
+    score: number;
+    rationale: string;
+};
+
+export type ApplicationList = Array<Pick<Application, "id" | "name" | "score" | "rationale">>;
