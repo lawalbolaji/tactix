@@ -1,51 +1,3 @@
-export const jobPostings = [
-    {
-        id: 1,
-        title: "Software Engineer",
-        totalApplicants: 125,
-        successRate: 0.65,
-        scheduledInterviews: 45,
-        openPositions: 3,
-        status: "Active",
-    },
-    {
-        id: 2,
-        title: "Product Manager",
-        totalApplicants: 82,
-        successRate: 0.72,
-        scheduledInterviews: 28,
-        openPositions: 2,
-        status: "Active",
-    },
-    {
-        id: 3,
-        title: "UI/UX Designer",
-        totalApplicants: 93,
-        successRate: 0.58,
-        scheduledInterviews: 35,
-        openPositions: 1,
-        status: "Closed",
-    },
-    {
-        id: 4,
-        title: "Data Analyst",
-        totalApplicants: 68,
-        successRate: 0.79,
-        scheduledInterviews: 22,
-        openPositions: 2,
-        status: "Active",
-    },
-    {
-        id: 5,
-        title: "Marketing Coordinator",
-        totalApplicants: 54,
-        successRate: 0.63,
-        scheduledInterviews: 18,
-        openPositions: 1,
-        status: "Closed",
-    },
-];
-
 export const applicants = [
     {
         id: 1,
@@ -56,6 +8,7 @@ export const applicants = [
         coverLetter: "I am a highly qualified candidate for this role...",
         score: 85,
         rationale: "John has excellent relevant experience and strong communication skills.",
+        status: "rejected"
     },
     {
         id: 2,
@@ -66,6 +19,7 @@ export const applicants = [
         coverLetter: "I am passionate about this opportunity and believe I can make a significant contribution...",
         score: 78,
         rationale: "Jane has the required skills but lacks some direct industry experience.",
+        status: "rejected"
     },
     {
         id: 3,
@@ -76,6 +30,7 @@ export const applicants = [
         coverLetter: "I am excited to apply for this role and believe my background makes me an ideal candidate...",
         score: 92,
         rationale: "Bob has exceptional qualifications and experience that are a perfect fit for this role.",
+        status: "rejected"
     },
     {
         id: 4,
@@ -86,6 +41,7 @@ export const applicants = [
         coverLetter: "I am confident that I can excel in this position and contribute to the success of the team...",
         score: 80,
         rationale: "Sarah has strong skills and experience, but her cover letter could be more compelling.",
+        status: "rejected"
     },
     {
         id: 5,
@@ -97,6 +53,7 @@ export const applicants = [
             "I believe my unique background and problem-solving abilities make me an excellent fit for this role...",
         score: 88,
         rationale: "Tom has a solid mix of relevant experience and skills, and his cover letter is well-written.",
+        status: "rejected"
     },
     {
         id: 6,
@@ -107,6 +64,7 @@ export const applicants = [
         coverLetter: "I am excited to apply for this role and believe my background makes me an ideal candidate...",
         score: 90,
         rationale: "Emily has exceptional qualifications and experience that are a perfect fit for this role.",
+        status: "rejected"
     },
     {
         id: 7,
@@ -117,6 +75,7 @@ export const applicants = [
         coverLetter: "I am confident that I can excel in this position and contribute to the success of the team...",
         score: 82,
         rationale: "Michael has strong skills and experience, but his cover letter could be more compelling.",
+        status: "rejected"
     },
     {
         id: 8,
@@ -128,6 +87,7 @@ export const applicants = [
             "I believe my unique background and problem-solving abilities make me an excellent fit for this role...",
         score: 86,
         rationale: "Olivia has a solid mix of relevant experience and skills, and her cover letter is well-written.",
+        status: "rejected"
     },
     {
         id: 9,
@@ -138,6 +98,7 @@ export const applicants = [
         coverLetter: "I am excited to apply for this role and believe my background makes me an ideal candidate...",
         score: 88,
         rationale: "David has exceptional qualifications and experience that are a perfect fit for this role.",
+        status: "rejected"
     },
     {
         id: 10,
@@ -148,5 +109,6 @@ export const applicants = [
         coverLetter: "I am confident that I can excel in this position and contribute to the success of the team...",
         score: 84,
         rationale: "Jessica has strong skills and experience, but her cover letter could be more compelling.",
+        status: "rejected"
     },
 ];
