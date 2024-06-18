@@ -19,6 +19,7 @@
         "signup",
         "supabase",
         "Tactix",
-        "tailwindcss"
+        "tailwindcss",
+        "uploadthing"
     ]
 }
