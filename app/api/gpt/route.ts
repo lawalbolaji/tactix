@@ -7,7 +7,16 @@ const openai = new OpenAI({
 
 export async function POST(request: Request) {
     const payload = await request.json();
-    // call gpt oo
+
+    /* 
+        - High level summary
+        - Brief description about company - About US (mission, vision, achievements so far)
+        - What we are looking for (Qualifications/experience)
+        - What we offer
+        - Legalese
+    */
+
+    // call gpt 4o
     const completions = await openai.chat.completions.create({
         model: "gpt-4o",
         messages: [
