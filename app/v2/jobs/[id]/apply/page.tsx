@@ -2,6 +2,7 @@ import { notFound, redirect } from "next/navigation";
 import { z } from "zod";
 import { createClient } from "@/lib/supabase/server";
 import { SubmitButton } from "../../../../../components/apply/submitbtn";
+import { FileUploader } from "../../../../../components/apply/fileuploader";
 
 const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
 
@@ -23,6 +24,7 @@ export default function ApplyForJobPage({ params }: { params: { id: string } }) 
             linkedin: z.string().url(),
             portfolio: z.string().url(),
             location: z.string(),
+            resume_uri: z.string(),
         });
 
         const {
@@ -37,6 +39,7 @@ export default function ApplyForJobPage({ params }: { params: { id: string } }) 
             linkedin: formData.get("linkedin"),
             portfolio: formData.get("portfolio"),
             location: formData.get("location"),
+            resume_uri: formData.get("resume"),
         });
 
         if (!success) {
@@ -44,37 +47,17 @@ export default function ApplyForJobPage({ params }: { params: { id: string } }) 
             return { error: { message: validateError.flatten().fieldErrors } };
         }
 
-        // upload file
-        const resume = formData.get("resume");
+        /* image must have been uploaded otherwise we won't get the resume_uri and the form won't submit */
 
-        if (resume instanceof Blob) {
-            // TODO: PLEASE REMEMBER TO VALIDATE FILE SIZE
-            console.log(resume);
+        const supabase = createClient();
+        const { error: dbError } = await supabase.from("applications").insert([{ ...application, job_id: jobId }]);
 
-            if (resume.size > MAX_FILE_SIZE) {
-                console.log("file is too large");
-                return ""; // TODO: give feedback to user on filesize
-            }
-
-            /* TODO: upload resume and get source url */
-
-            // submit application
-            /* DO NOT REMOVE THIS INSTANCE - closing on the instance in the main server component will make next.js attempt to serialize and send it over the wire and fail remarkably */
-            const supabase = createClient();
-            const { error: dbError } = await supabase
-                .from("applications")
-                .insert([{ ...application, job_id: jobId, resume_uri: "testing_for_dev_only" }]);
-
-            if (dbError) {
-                console.log(dbError);
-                return { error: { message: "unable to create application" } };
-            }
-
-            redirect(`/v2/jobs/${jobId}/success`);
+        if (dbError) {
+            console.log(dbError);
+            return { error: { message: "unable to create application" } };
         }
 
-        /* DEBUGGING */
-        console.log("resume blob is missing");
+        redirect(`/v2/jobs/${jobId}/success`);
     }
 
     return (
@@ -143,43 +126,7 @@ export default function ApplyForJobPage({ params }: { params: { id: string } }) 
                             </div>
 
                             <div className="col-span-full">
-                                <label htmlFor="resume" className="block text-sm font-medium leading-6 text-gray-900">
-                                    CV / Resume
-                                </label>
-                                <div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
-                                    <div className="text-center">
-                                        <svg
-                                            className="mx-auto h-12 w-12 text-gray-300"
-                                            viewBox="0 0 24 24"
-                                            fill="currentColor"
-                                            aria-hidden="true"
-                                        >
-                                            <path
-                                                fill-rule="evenodd"
-                                                d="M1.5 6a2.25 2.25 0 012.25-2.25h16.5A2.25 2.25 0 0122.5 6v12a2.25 2.25 0 01-2.25 2.25H3.75A2.25 2.25 0 011.5 18V6zM3 16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0021 18v-1.94l-2.69-2.689a1.5 1.5 0 00-2.12 0l-.88.879.97.97a.75.75 0 11-1.06 1.06l-5.16-5.159a1.5 1.5 0 00-2.12 0L3 16.061zm10.125-7.81a1.125 1.125 0 112.25 0 1.125 1.125 0 01-2.25 0z"
-                                                clip-rule="evenodd"
-                                            />
-                                        </svg>
-                                        <div className="mt-4 flex text-sm leading-6 text-gray-600">
-                                            <label
-                                                htmlFor="file-upload"
-                                                className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
-                                            >
-                                                <span>Upload a file</span>
-                                                <input
-                                                    id="resume"
-                                                    name="resume"
-                                                    type="file"
-                                                    // className="sr-only"
-                                                    required
-                                                    aria-required
-                                                />
-                                            </label>
-                                            <p className="pl-1">or drag and drop</p>
-                                        </div>
-                                        <p className="text-xs leading-5 text-gray-600">PNG, JPG, GIF up to 10MB</p>
-                                    </div>
-                                </div>
+                                <FileUploader />
                             </div>
                         </div>
                     </div>
