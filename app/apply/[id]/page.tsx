@@ -17,7 +17,12 @@ export default async function ApplicationPage({ params }: { params: { id: string
     }
 
     const supabase = createClient();
-    const { data, error } = await supabase.from("jobs").select().eq("id", jobId).eq("is_published", true);
+    const { data, error } = await supabase
+        .from("jobs")
+        .select()
+        .eq("id", jobId)
+        .eq("is_published", true)
+        .eq("is_deleted", false);
 
     if (!data || data.length <= 0 || error !== null) {
         error && console.log(error);
