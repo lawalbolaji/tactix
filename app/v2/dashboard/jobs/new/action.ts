@@ -1,10 +1,10 @@
 "use server";
 
 import { z } from "zod";
-import { employmentTypes, experienceLevels } from "./page";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
+import { employmentTypes, experienceLevels } from "@/components/jobs/data";
 
 export async function createNewJobPosting(formData: FormData) {
     const payload = {

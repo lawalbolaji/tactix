@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { employmentTypes, employmentTypeIcons } from "../../app/v2/dashboard/jobs/new/page";
 import { Label } from "../shared/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
+import { employmentTypes, employmentTypeIcons } from "../jobs/data";
 
 export function EmploymentTypeSelect() {
     const [employmentType, setEmploymentType] = useState<(typeof employmentTypes)[number]>("Permanent");

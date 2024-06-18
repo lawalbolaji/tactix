@@ -1,29 +1,12 @@
-// prettier-ignore
-import { Footprints, ShareIcon, HardHat, Waypoints, GlobeLock, ReceiptText, Handshake } from "lucide-react";
 import { Input } from "@/components/shared/input";
 import { Label } from "@/components/shared/label";
 import { Textarea } from "@/components/shared/textarea";
-import { Button } from "@/components/ui/button";
 import { GenerateButton } from "@/components/ai/generate-btn";
 import { Editor } from "@/components/ai/editor";
 import { EmploymentTypeSelect } from "@/components/ai/employment-type";
 import { ExperienceSelect } from "@/components/ai/experience";
 import { createNewJobPosting } from "./action";
 import { SubmitButton } from "../../../../../components/ai/submitbtn";
-
-export const employmentTypes = ["Contract", "Permanent", "Part/time"] as const;
-export const employmentTypeIcons: Record<(typeof employmentTypes)[number], JSX.Element> = {
-    Contract: <Handshake />,
-    Permanent: <GlobeLock />,
-    "Part/time": <ReceiptText />,
-};
-
-export const experienceLevels = ["Entry Level", "Mid/Intermediate Level", "Expert"] as const;
-export const experienceLevelIcons: Record<(typeof experienceLevels)[number], JSX.Element> = {
-    Expert: <HardHat />,
-    "Entry Level": <Footprints />,
-    "Mid/Intermediate Level": <Waypoints />,
-};
 
 export default async function CreateNewJobPage() {
     return (

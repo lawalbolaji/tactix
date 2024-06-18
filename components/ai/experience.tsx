@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { experienceLevels, experienceLevelIcons } from "../../app/v2/dashboard/jobs/new/page";
 import { Label } from "../shared/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
+import { experienceLevels, experienceLevelIcons } from "../jobs/data";
 
 export function ExperienceSelect() {
     const [experienceLevel, setExperienceLevel] = useState<(typeof experienceLevels)[number]>("Entry Level");
