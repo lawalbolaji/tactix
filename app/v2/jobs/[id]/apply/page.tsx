@@ -1,10 +1,8 @@
 import { notFound, redirect } from "next/navigation";
 import { z } from "zod";
 import { createClient } from "@/lib/supabase/server";
-import { SubmitButton } from "../../../../../components/apply/submitbtn";
-import { FileUploader } from "../../../../../components/apply/fileuploader";
-
-const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
+import { SubmitButton } from "@/components/apply/submitbtn";
+import { FileUploader } from "@/components/apply/fileuploader";
 
 export default function ApplyForJobPage({ params }: { params: { id: string } }) {
     const { success, data: jobId, error: urlValidationError } = z.number().safeParse(+params.id);
