@@ -63,8 +63,6 @@ export default async function JobsPage({ searchParams }: { searchParams: { offse
                 </div>
             </div>
             <CardContent style={{ border: "none" }}>
-                {/* everything in this card will be a client component */}
-
                 <Table>
                     <TableHeader>
                         <TableRow>
