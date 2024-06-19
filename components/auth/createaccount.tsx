@@ -226,7 +226,7 @@ function CreateAccountButton(
         <button
             {...props}
             type="submit"
-            className="w-full flex items-center justify-center disabled:bg-slate-300 disabled:opacity-40 disabled:text-black text-white bg-[#2563eb] hover:bg-[#1d4ed8] focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+            className="w-full flex items-center justify-center disabled:bg-slate-300 disabled:opacity-40 disabled:text-black text-white bg-[hsl(222.2,47.4%,11.2%)] hover:bg-opacity-80 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
         >
             {pending ? (
                 <div className="h-5 w-5 animate-spin rounded-full border-4 border-gray-300 border-t-[#d099d750] mr-4" />
