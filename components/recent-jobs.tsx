@@ -4,6 +4,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from ".
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel } from "./ui/dropdown-menu";
+import Link from "next/link";
 
 export function RecentJobPostings(props: { jobs: Array<any> | null }) {
     return (
@@ -19,8 +20,10 @@ export function RecentJobPostings(props: { jobs: Array<any> | null }) {
                 {props.jobs?.map((job) => (
                     <TableRow key={job.id}>
                         <TableCell>
-                            <div className="font-medium">{job.title}</div>
-                            <div className="hidden text-sm text-muted-foreground md:inline">{job.location}</div>
+                            <Link href={`./dashboard/jobs/${job.id}/applications`}>
+                                <div className="font-medium">{job.title}</div>
+                                <div className="hidden text-sm text-muted-foreground md:inline">{job.location}</div>
+                            </Link>
                         </TableCell>
                         <TableCell className="">
                             <Badge className="text-xs" variant="outline">

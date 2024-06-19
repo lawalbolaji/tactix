@@ -17,7 +17,7 @@ export function CopyJobUrlButton(props: { jobId: number }) {
             onClick={() => {
                 /* generate application link and add to dashboard */
                 const rootUrl = new URL(window.location.href).hostname;
-                const link = `${rootUrl}/apply/${props.jobId}`;
+                const link = `${rootUrl}/v2/jobs/${props.jobId}/view`;
                 window.navigator.clipboard.writeText(link);
                 setUrlCopied(true);
                 setTimeout(() => {
