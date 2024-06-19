@@ -23,7 +23,8 @@ export default async function ViewJobPage({ params }: { params: { id: number } }
         .eq("id", jobId)
         .eq("is_published", true)
         .eq("is_deleted", false)
-        .single();
+        .gte("expires_at", new Date().toISOString())
+        .maybeSingle();
 
     if (!job || error !== null) {
         error && console.log(error);
