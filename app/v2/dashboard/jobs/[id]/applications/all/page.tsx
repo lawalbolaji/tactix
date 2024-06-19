@@ -1,16 +1,15 @@
 // prettier-ignore
-import { Pagination, PaginationContent, PaginationItem, PaginationPrevious, PaginationNext, PaginationLink } from "@/components/shared/pagination";
-import { TableHeader, TableRow, TableHead, TableBody, TableCell, Table } from "@/components/shared/table";
+import { Pagination, PaginationContent, PaginationItem, PaginationPrevious, PaginationNext, PaginationLink } from "@/components/ui/pagination";
+import { TableHeader, TableRow, TableHead, TableBody, TableCell, Table } from "@/components/ui/table";
 import Link from "next/link";
 import { MailIcon } from "@/components/shared/icons/mail";
-import { FileIcon } from "@/components/shared/icons/file";
 import { UserIcon } from "@/components/shared/icons/user";
 import { createClient } from "@/lib/supabase/server";
 import { z } from "zod";
 import { notFound } from "next/navigation";
 import { FileSearchIcon, FolderDown, LocateFixed } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "../../../../../../../components/ui/badge";
+import { Badge } from "@/components/ui/badge";
 
 const PAGE_SIZE = 9;
 

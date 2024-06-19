@@ -49,7 +49,6 @@ export default async function ApplicationsPage({ params }: { params: { id: strin
                             There are currently no applicants for this position. Check back later or consider posting
                             the job in additional places.
                         </p>
-                        {/* <Button variant="outline">Post Job</Button> */}
                     </div>
                 ) : (
                     <div className="grid gap-6 md:gap-8 lg:gap-10">

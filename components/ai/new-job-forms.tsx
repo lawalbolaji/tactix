@@ -3,9 +3,9 @@
 import { useState } from "react";
 import { createNewJobPosting } from "../../app/v2/dashboard/jobs/new/action";
 import { applicationReceivedResponse } from "../../constants/data";
-import { Input } from "../shared/input";
-import { Label } from "../shared/label";
-import { Textarea } from "../shared/textarea";
+import { Input } from "../ui/input";
+import { Label } from "../ui/label";
+import { Textarea } from "../ui/textarea";
 import { Employment, EmploymentTypeSelect } from "./employment-type";
 import { Experience, ExperienceSelect } from "./experience";
 import { Editor } from "./rooteditor/editor";

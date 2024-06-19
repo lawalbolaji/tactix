@@ -2,8 +2,8 @@
 
 import { useFormState, useFormStatus } from "react-dom";
 import { signIn } from "@/app/action";
-import { Label } from "../shared/label";
-import { Input } from "../shared/input";
+import { Label } from "../ui/label";
+import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { Github } from "../ui/icons/github";
 import { Chrome } from "../ui/icons/chrome";

@@ -1,6 +1,6 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/shared/avatar";
-import { Separator } from "@/components/shared/separator";
-import { Button } from "@/components/shared/button";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Separator } from "@/components/ui/separator";
+import { Button } from "@/components/ui/button";
 import { PhoneIcon } from "@/components/shared/icons/phone";
 import { BriefcaseIcon } from "@/components/shared/icons/briefcase";
 import { BuildingIcon } from "@/components/shared/icons/building";

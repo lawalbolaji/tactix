@@ -1,8 +1,8 @@
 "use client";
 
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
-import { Label } from "../../shared/label";
-import { Button } from "../../ui/button";
+import { Label } from "@/components/ui/label";
+import { Button } from "@/components/ui/button";
 import { Employment } from "../employment-type";
 import { Experience } from "../experience";
 import { EDITOR_NAMESPACE, EDITOR_NODES, RootEditor } from "./lexical/rooteditor";

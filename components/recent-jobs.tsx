@@ -1,6 +1,6 @@
 import { EllipsisVertical } from "lucide-react";
-import { DropdownMenuTrigger } from "./shared/dropdown-menu";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "./shared/table";
+import { DropdownMenuTrigger } from "./ui/dropdown-menu";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "./ui/table";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel } from "./ui/dropdown-menu";

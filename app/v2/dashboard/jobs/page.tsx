@@ -1,8 +1,8 @@
-import { TableHeader, TableRow, TableHead, TableBody, TableCell, Table } from "@/components/shared/table";
+import { TableHeader, TableRow, TableHead, TableBody, TableCell, Table } from "@/components/ui/table";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 // prettier-ignore
-import { Pagination, PaginationContent, PaginationItem, PaginationPrevious, PaginationLink, PaginationNext } from "@/components/shared/pagination";
+import { Pagination, PaginationContent, PaginationItem, PaginationPrevious, PaginationLink, PaginationNext } from "@/components/ui/pagination";
 import { createClient } from "@/lib/supabase/server";
 import { FileSearchIcon } from "@/components/shared/icons/filesearch";
 import Link from "next/link";
