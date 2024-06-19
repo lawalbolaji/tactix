@@ -1,16 +1,20 @@
-import Link from "next/link";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../components/ui/card";
+import { SignIn } from "../components/auth/signin";
 
 export default function Home() {
     return (
-        <main className="flex min-h-screen w-full flex-col items-center justify-center p-4 lg:p-24 lg:bg-[url('/tactix.png')] lg:bg-cover lg:bg-no-repeat lg:bg-center bg-transparent">
-            <div className="text:3xl lg:text-7xl font-bold line-1 anim-typewriter">Welcome to Tactix</div>
-            <div className="lg:mt-8 mt-4 launch transition ease-in-out hover:-translate-y-1 hover:scale-110">
-                <Link
-                    href={"/dashboard"}
-                    className="flex items-center h-full w-full justify-center font-bold mt-4 p-2 lg:p-4 launch border border-blue-200 rounded-lg hover:bg-blue-200"
-                >
-                    Go 🚀
-                </Link>
+        <main className="flex min-h-screen w-full flex-row items-center justify-center lg:bg-[url('/tactix.png')] lg:bg-cover lg:bg-no-repeat lg:bg-center bg-transparent">
+            <div className="hidden lg:flex min-h-screen flex-grow">{/* rest of the page */}</div>
+            <div className="min-h-screen flex items-start justify-center p-12 2xl:p-28">
+                <Card className="mx-auto max-w-sm">
+                    <CardHeader>
+                        <CardTitle className="text-xl">Welcome back</CardTitle>
+                        <CardDescription>Enter your credentials below to sign in</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                        <SignIn />
+                    </CardContent>
+                </Card>
             </div>
         </main>
     );
