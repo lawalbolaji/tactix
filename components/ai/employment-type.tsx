@@ -1,19 +1,24 @@
 "use client";
 
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import { Label } from "../shared/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
 import { employmentTypes, employmentTypeIcons } from "../jobs/data";
 
-export function EmploymentTypeSelect() {
-    const [employmentType, setEmploymentType] = useState<(typeof employmentTypes)[number]>("Permanent");
+export type Employment = (typeof employmentTypes)[number];
+
+export function EmploymentTypeSelect(props: {
+    employmentType: Employment;
+    setEmploymentType: Dispatch<SetStateAction<Employment>>;
+}) {
+    const [employmentType, setEmploymentType] = useState<Employment>("Permanent");
     return (
         <>
             <Label htmlFor="employment_type">Employment type</Label>
             <input type="text" hidden aria-hidden name="employment_type" required value={employmentType} />
             <Select
                 onValueChange={(val) => {
-                    setEmploymentType(val as (typeof employmentTypes)[number]);
+                    setEmploymentType(val as Employment);
                 }}
             >
                 <SelectTrigger

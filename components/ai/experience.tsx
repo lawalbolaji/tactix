@@ -1,20 +1,23 @@
 "use client";
 
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import { Label } from "../shared/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
 import { experienceLevels, experienceLevelIcons } from "../jobs/data";
 
-export function ExperienceSelect() {
-    const [experienceLevel, setExperienceLevel] = useState<(typeof experienceLevels)[number]>("Entry Level");
+export type Experience = (typeof experienceLevels)[number];
 
+export function ExperienceSelect(props: {
+    experienceLevel: Experience;
+    setExperienceLevel: Dispatch<SetStateAction<Experience>>;
+}) {
     return (
         <>
             <Label htmlFor="experience">Experience</Label>
-            <input type="text" hidden aria-hidden name="experience" value={experienceLevel} />
+            <input type="text" hidden aria-hidden name="experience" value={props.experienceLevel} />
             <Select
                 onValueChange={(val) => {
-                    setExperienceLevel(val as (typeof experienceLevels)[number]);
+                    props.setExperienceLevel(val as Experience);
                 }}
             >
                 <SelectTrigger id="experience" name="experience" className="items-start [&_[data-description]]:hidden">

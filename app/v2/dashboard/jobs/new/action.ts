@@ -56,6 +56,7 @@ export async function createNewJobPosting(formData: FormData) {
         {
             ...data,
             author_id: user.id,
+            is_published: true,
             expires_at: randomDate(new Date(2024, 0, 1), new Date(2025, 0, 1)).toISOString(),
         },
     ]);

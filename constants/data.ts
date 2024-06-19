@@ -21,21 +21,13 @@ export const navItems: NavItem[] = [
     },
 ];
 
-const applicationReceivedResponse = `
-We have received your application!
-Thank you for your application. We appreciate your interest in joining our company.
-We will review your application for {job-title} shortly, and get back to you as soon as possible.
-Best regards,
+export const applicationReceivedResponse = `Dear {{user.name}},
+
+We are pleased to inform you that you have been selected for the role of {{job.role}} at {{user.company}}. We congratulate you on this milestone and look forward to conquering the industry with your help.
+
+Regards,
+hr@{{user.company}}
 `;
-
-/* 
-    Dear {{user.name}},
-
-    We are pleased to inform you that you have been selected for the role of {{job.role}} at {{user.company}}. We congratulate you on this milestone and look forward to conquering the industry with your help.
-
-    Regards,
-    hr@{{user.compay}}
-*/
 
 // sample markdown
 
