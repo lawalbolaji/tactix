@@ -30,7 +30,7 @@ export default function ApplyForJobPage({ params }: { params: { id: string } }) 
             data: application,
             error: validateError,
         } = jobApplicationSchema.safeParse({
-            name: `${formData.get("firstname")} ${formData.get("lastname")}`,
+            name: formData.get("firstname") + " " + formData.get("lastname"),
             email: formData.get("email"),
             cover_letter: formData.get("cover_letter"),
             additional_info: formData.get("additional_info"),
@@ -138,7 +138,7 @@ export default function ApplyForJobPage({ params }: { params: { id: string } }) 
                         <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                             <div className="sm:col-span-3">
                                 <label
-                                    htmlFor="first-name"
+                                    htmlFor="firstname"
                                     className="block text-sm font-medium leading-6 text-gray-900"
                                 >
                                     First name
@@ -146,8 +146,8 @@ export default function ApplyForJobPage({ params }: { params: { id: string } }) 
                                 <div className="mt-2">
                                     <input
                                         type="text"
-                                        name="first-name"
-                                        id="first-name"
+                                        name="firstname"
+                                        id="firstname"
                                         autoComplete="given-name"
                                         required
                                         aria-required
@@ -166,8 +166,8 @@ export default function ApplyForJobPage({ params }: { params: { id: string } }) 
                                 <div className="mt-2">
                                     <input
                                         type="text"
-                                        name="last-name"
-                                        id="last-name"
+                                        name="lastname"
+                                        id="lastname"
                                         autoComplete="family-name"
                                         required
                                         aria-required
