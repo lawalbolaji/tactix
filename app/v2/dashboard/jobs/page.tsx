@@ -8,8 +8,8 @@ import { FileSearchIcon } from "@/components/shared/icons/filesearch";
 import Link from "next/link";
 import { PublishJobButton } from "@/components/jobs/publish";
 import { format, parseISO } from "date-fns";
-import { DeleteJobButton } from "../../../../components/jobs/delete";
-import { CopyJobUrlButton } from "../../../../components/jobs/copy";
+import { DeleteJobButton } from "@/components/jobs/delete";
+import { CopyJobUrlButton } from "@/components/jobs/copy";
 
 // const REMOTE_TIME_FORMAT = "yyyy-MM-dd'T'HH:mm:ss.SSSxxxxx";
 const APP_TIME_FORMAT = "yyyy-MM-dd";
@@ -38,6 +38,13 @@ export default async function JobsPage({ searchParams }: { searchParams: { offse
                 <p className="text-gray-500 mb-6">
                     You have not posted any jobs yet. Check back later or consider posting a new job.
                 </p>
+
+                <Link
+                    href={"./jobs/new"}
+                    className="p-4 border rounded-lg bg-[hsl(222.2,47.4%,11.2%)] text-white hover:opacity-80"
+                >
+                    + Create new Job{" "}
+                </Link>
             </div>
         );
     }

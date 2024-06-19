@@ -5,7 +5,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowUpRightIcon } from "lucide-react";
+import { ArrowUpRightIcon, FileSearchIcon } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 
 /* total applicants, success rate, interviews, open positions */
@@ -70,10 +70,12 @@ export default async function page() {
         countInterviewsResult.status === "fulfilled"
     ) {
         jobs = fetchJobsResult.value.data;
-        totalApplicants = countApplicantsResult.value.count ?? 1;
-        totalInterviews = countInterviewsResult.value.count ?? 1;
-        totalOpenPositions = countOpenPositionsResult.value.count ?? 1;
+        totalApplicants = countApplicantsResult.value.count ?? 0;
+        totalInterviews = countInterviewsResult.value.count ?? 0;
+        totalOpenPositions = countOpenPositionsResult.value.count ?? 0;
     }
+
+    const successRate = Math.floor((totalInterviews / totalApplicants) * 100);
 
     return (
         <ScrollArea className="h-full">
@@ -133,9 +135,7 @@ export default async function page() {
                                     </svg>
                                 </CardHeader>
                                 <CardContent>
-                                    <div className="text-2xl font-bold">
-                                        {Math.floor((totalInterviews / totalApplicants) * 100)}%
-                                    </div>
+                                    <div className="text-2xl font-bold">{isNaN(successRate) ? 0 : successRate}%</div>
                                     <p className="text-xs text-muted-foreground">+10.1% from last month</p>
                                 </CardContent>
                             </Card>
@@ -206,7 +206,18 @@ export default async function page() {
                                     </Button>
                                 </CardHeader>
                                 <CardContent>
-                                    <RecentJobPostings jobs={jobs} />
+                                    {jobs?.length ? (
+                                        <RecentJobPostings jobs={jobs} />
+                                    ) : (
+                                        <div className="bg-gray-100 p-6 md:p-8 flex flex-col items-center justify-center text-center h-[300px] w-full">
+                                            <FileSearchIcon className="w-12 h-12 text-gray-500 mb-4" />
+                                            <h2 className="text-2xl font-bold mb-2">No Job Postings Yet</h2>
+                                            <p className="text-gray-500 mb-6">
+                                                You have not posted any jobs yet. Check back later or consider posting a
+                                                new job.
+                                            </p>
+                                        </div>
+                                    )}
                                 </CardContent>
                             </Card>
                         </div>
