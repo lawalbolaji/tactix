@@ -96,26 +96,30 @@ export function GenerateButton(props: GenerateButtonProps) {
                 disabled={requestStatus === "loading"}
                 onClick={async () => {
                     setRequestStatus("loading");
-                    const response = await fetch("/api/gpt", {
-                        method: "POST",
-                        body: JSON.stringify(props),
-                    });
-                    const responseAsJson = await response.json();
-                    if (response.ok) {
-                        console.log(responseAsJson);
-
-                        /* update editor state here */
-                        editor.update(() => {
-                            /* clean editor */
-                            const root = $getRoot();
-                            root.clear();
-
-                            $convertFromMarkdownString(responseAsJson.message, TRANSFORMERS, root, true);
+                    try {
+                        const response = await fetch("/api/gpt", {
+                            method: "POST",
+                            body: JSON.stringify(props),
                         });
-                        setRequestStatus("success");
-                    } else {
+                        const responseAsJson = await response.json();
+                        if (response.ok) {
+                            console.log(responseAsJson);
+
+                            /* update editor state here */
+                            editor.update(() => {
+                                /* clean editor */
+                                const root = $getRoot();
+                                root.clear();
+
+                                $convertFromMarkdownString(responseAsJson.message, TRANSFORMERS, root, true);
+                            });
+                            setRequestStatus("success");
+                        } else {
+                            setRequestStatus("error");
+                            console.error(responseAsJson);
+                        }
+                    } catch (error) {
                         setRequestStatus("error");
-                        console.error(responseAsJson);
                     }
                 }}
             >
