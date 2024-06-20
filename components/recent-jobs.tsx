@@ -5,6 +5,7 @@ import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel } from "./ui/dropdown-menu";
 import Link from "next/link";
+import { CopyJobUrlStatic } from "./copyjoburlstatic";
 
 export function RecentJobPostings(props: { jobs: Array<any> | null }) {
     return (
@@ -41,8 +42,7 @@ export function RecentJobPostings(props: { jobs: Array<any> | null }) {
                                 <DropdownMenuContent align="end">
                                     <DropdownMenuLabel className="font-bold">Actions</DropdownMenuLabel>
                                     {/* create job url based on job id */}
-                                    <DropdownMenuItem>Copy job url</DropdownMenuItem>
-
+                                    <CopyJobUrlStatic jobId={job.id} />
                                     {/* this should call a server action to update the jobStatus */}
                                     <DropdownMenuItem>Publish</DropdownMenuItem>
 
