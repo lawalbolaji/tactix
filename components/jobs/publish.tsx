@@ -29,7 +29,10 @@ export function PublishJobButton(props: { jobId: number; is_published: boolean }
 
                     if (response.ok) {
                         setRemoteRequestStatus("success");
-                        return;
+
+                        /* refresh page */
+                        window.location.reload();
+                        return false;
                     }
 
                     const responseAsJson = await response.json();

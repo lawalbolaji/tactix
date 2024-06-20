@@ -25,11 +25,15 @@ export function DeleteJobButton(props: { jobId: number }) {
                         method: "POST",
                         cache: "no-cache",
                         body: JSON.stringify({ op: "SOFT_DELETE" }),
+                        next: { revalidate: 0 },
                     });
 
                     if (response.ok) {
                         setRemoteRequestStatus("success");
-                        return;
+
+                        /* refresh page - https://stackoverflow.com/questions/3715047/how-to-reload-a-page-using-javascript#:~:text=page%20for%20more-,information,-.*/
+                        window.location.reload();
+                        return false;
                     }
 
                     const responseAsJson = await response.json();

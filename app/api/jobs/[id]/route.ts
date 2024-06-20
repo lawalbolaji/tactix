@@ -21,6 +21,6 @@ export async function POST(request: Request, { params }: { params: { id: string 
         }
     }
 
-    revalidatePath("/", "page");
+    revalidatePath("/v2/dashboard/jobs", "layout");
     return NextResponse.json({ message: "ok" });
 }
