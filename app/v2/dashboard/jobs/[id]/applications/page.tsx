@@ -32,7 +32,7 @@ export default async function ApplicationsPage({ params }: { params: { id: strin
         jobTitle = (data[0].jobs as unknown as { title: string }).title;
         topApplicants.push(...data);
     } else {
-        console.error({ error });
+        console.info({ message: "no data returned", error });
     }
 
     return (
