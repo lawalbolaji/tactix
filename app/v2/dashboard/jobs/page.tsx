@@ -28,6 +28,7 @@ export default async function JobsPage({ searchParams }: { searchParams: { offse
         .from("jobs")
         .select("id,location,title,is_open,is_published,created_at,expires_at", { count: "exact" })
         .eq("is_deleted", false)
+        .order("created_at", { ascending: false })
         .range(offset, offset + PAGE_SIZE - 1);
 
     if (jobs === null || totalRecords === null || !jobs.length || error) {

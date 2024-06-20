@@ -54,6 +54,7 @@ export default async function page() {
         .from("jobs")
         .select("id,location,title,is_open,is_published")
         .eq("is_deleted", false)
+        .order("created_at", { ascending: false })
         .range(0, 3);
     asyncJobs.push(countApplicantsAsync);
     asyncJobs.push(countInterviewsAsync);

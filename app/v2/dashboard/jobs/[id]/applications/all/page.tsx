@@ -47,6 +47,7 @@ export default async function AllApplicationsPage({
         .from("applications")
         .select("id,name,email,resume_uri,status,salary,location,jobs(title)", { count: "exact" })
         .eq("job_id", jobId)
+        .order("score", { ascending: false })
         .range(offset, offset + PAGE_SIZE - 1);
 
     if (applications === null || totalRecords === null || !applications.length || error) {
