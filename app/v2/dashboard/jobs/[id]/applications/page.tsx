@@ -4,6 +4,7 @@ import { StarIcon } from "@/components/shared/icons/star";
 import { ApplicationList } from "@/entities/db";
 import { createClient } from "@/lib/supabase/server";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import { Fragment } from "react";
 
 /* /dashboard/jobs/[id]/applications */
 
@@ -55,9 +56,9 @@ export default async function ApplicationsPage({ params }: { params: { id: strin
                         </header>
 
                         <div className="grid gap-6 md:gap-8 lg:gap-10">
-                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-10">
+                            <div className="flex flex-row items-center justify-center gap-6 md:gap-8 lg:gap-10">
                                 {topApplicants.map((applicant) => (
-                                    <>
+                                    <Fragment key={applicant.id}>
                                         <div className="bg-gray-100 rounded-lg p-4 md:p-6 flex flex-col items-start gap-4">
                                             <div className="flex items-center gap-4">
                                                 {/* TODO: need some auth data for each applicant */}
@@ -105,7 +106,7 @@ export default async function ApplicationsPage({ params }: { params: { id: strin
                                                 </Link>
                                             </div>
                                         </div>
-                                    </>
+                                    </Fragment>
                                 ))}
                             </div>
 
