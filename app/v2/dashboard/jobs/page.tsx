@@ -135,17 +135,21 @@ export default async function JobsPage({ searchParams }: { searchParams: { offse
                                 <></>
                             ) : (
                                 <PaginationItem>
-                                    <PaginationLink href="#">{currentPage}</PaginationLink>
+                                    <PaginationLink href={`./jobs?offset=${(currentPage - 1) * PAGE_SIZE}`}>
+                                        {currentPage}
+                                    </PaginationLink>
                                 </PaginationItem>
                             )}
                             <PaginationItem>
-                                <PaginationLink href="#" isActive>
+                                <PaginationLink href="#" isActive aria-disabled>
                                     {currentPage + 1}
                                 </PaginationLink>
                             </PaginationItem>
                             {(currentPage + 1) * PAGE_SIZE < totalRecords ? (
                                 <PaginationItem>
-                                    <PaginationLink href="#">{currentPage + 2}</PaginationLink>
+                                    <PaginationLink href={`./jobs?offset=${(currentPage + 1) * PAGE_SIZE}`}>
+                                        {currentPage + 2}
+                                    </PaginationLink>
                                 </PaginationItem>
                             ) : (
                                 <></>
