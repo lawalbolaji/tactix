@@ -20,7 +20,7 @@ export function RecentJobPostings(props: { jobs: Array<any> | null }) {
                 {props.jobs?.map((job) => (
                     <TableRow key={job.id}>
                         <TableCell>
-                            <Link href={`./dashboard/jobs/${job.id}/applications`}>
+                            <Link href={`./dashboard/jobs/${job.id}/applications`} prefetch={false}>
                                 <div className="font-medium">{job.title}</div>
                                 <div className="hidden text-sm text-muted-foreground md:inline">{job.location}</div>
                             </Link>
