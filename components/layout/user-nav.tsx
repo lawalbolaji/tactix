@@ -37,7 +37,7 @@ export function UserNav() {
                 </DropdownMenuGroup>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem>
-                    <Link href="api/auth/signout" prefetch={false}>
+                    <Link href="/api/auth/signout" prefetch={false}>
                         SignOut
                     </Link>
                 </DropdownMenuItem>
