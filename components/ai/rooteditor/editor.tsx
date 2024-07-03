@@ -7,7 +7,7 @@ import { Employment } from "../employment-type";
 import { Experience } from "../experience";
 import { EDITOR_NAMESPACE, EDITOR_NODES, RootEditor } from "./lexical/rooteditor";
 import { LexicalComposer } from "@lexical/react/LexicalComposer";
-import { $getRoot } from "lexical";
+import { $getRoot, $getSelection } from "lexical";
 import { $convertFromMarkdownString, $convertToMarkdownString, TRANSFORMERS } from "@lexical/markdown";
 import { useEffect, useState } from "react";
 
@@ -25,7 +25,7 @@ const editorConfig = {
     nodes: EDITOR_NODES,
     editorState: null,
     theme: {
-        root: "p-4 border h-auto max-h-[650px] overflow-scroll focus:outline-none relative z-10 bg-transparent",
+        root: "p-4 border h-auto max-h-[695px] overflow-scroll focus:outline-none relative z-10 bg-transparent",
         link: "cursor-pointer",
         text: {
             bold: "font-semibold",
@@ -107,23 +107,31 @@ export function GenerateButton(props: GenerateButtonProps) {
                             method: "POST",
                             body: JSON.stringify(props),
                         });
-                        const responseAsJson = await response.json();
-                        if (response.ok) {
-                            console.log(responseAsJson);
 
-                            /* update editor state here */
-                            editor.update(() => {
-                                /* clean editor */
-                                const root = $getRoot();
-                                root.clear();
-
-                                $convertFromMarkdownString(responseAsJson.message, TRANSFORMERS, root, true);
-                            });
+                        const reader = response.body?.getReader();
+                        /* make sure response is a readable stream */
+                        if (reader !== undefined) {
                             setRequestStatus("success");
-                        } else {
-                            setRequestStatus("error");
-                            console.error(responseAsJson);
+                            let chunks = "";
+                            while (true) {
+                                const { value, done } = await reader.read();
+                                chunks += new TextDecoder().decode(value);
+
+                                if (done) break;
+                                /* update editor state here */
+                                editor.update(() => {
+                                    const root = $getRoot();
+                                    $getSelection();
+                                    $convertFromMarkdownString(chunks, TRANSFORMERS, root, true);
+                                });
+                            }
+
+                            return;
                         }
+
+                        const responseAsJson = await response.json();
+                        setRequestStatus("error");
+                        console.error(responseAsJson);
                     } catch (error) {
                         setRequestStatus("error");
                     }

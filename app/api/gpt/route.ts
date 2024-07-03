@@ -1,12 +1,15 @@
 import { NextResponse } from "next/server";
-import OpenAI from "openai";
+// import OpenAI from "openai";
 import { createClient } from "@/lib/supabase/server";
+import { openai } from "@ai-sdk/openai";
+import { streamText } from "ai";
 
-const openai = new OpenAI({
-    apiKey: process.env.OPENAI_API_KEY,
-});
+// const openai = new OpenAI({
+//     apiKey: process.env.OPENAI_API_KEY,
+// });
 
-export const maxDuration = 20;
+// Allow streaming responses up to 30 seconds
+export const maxDuration = 30;
 
 export async function POST(request: Request) {
     const payload = await request.json();
@@ -24,8 +27,8 @@ export async function POST(request: Request) {
     const companyName = user?.user_metadata.company_name ?? "tactix";
 
     // call gpt 4o
-    const completions = await openai.chat.completions.create({
-        model: "gpt-4o",
+    const completions = await streamText({
+        model: openai("gpt-4o"),
         messages: [
             {
                 role: "user",
@@ -41,7 +44,7 @@ export async function POST(request: Request) {
                     Salary: ${payload.salary}
                     Company Name: ${companyName}
                     =======
-
+ 
                     You job post should include all the following sections:
                     - High level summary
                     - Brief description about company: About US (mission, vision, achievements so far), you can use a generic template for this
@@ -60,5 +63,5 @@ export async function POST(request: Request) {
         ],
     });
 
-    return NextResponse.json({ message: completions.choices[0].message.content });
+    return completions.toTextStreamResponse();
 }
