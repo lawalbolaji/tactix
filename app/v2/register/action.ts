@@ -60,5 +60,5 @@ export async function signUp(prevState: any, formData: FormData) {
     }
 
     revalidatePath("/v2/dashboard", "layout");
-    redirect("/v2/dashboard");
+    redirect("/v2/dashboard?newUser=true");
 }

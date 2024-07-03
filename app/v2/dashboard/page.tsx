@@ -8,11 +8,33 @@ import { Button } from "@/components/ui/button";
 import { ArrowUpRightIcon, FileSearchIcon } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { format } from "date-fns";
+import { NewUser } from "@/components/shared/icons/newuser";
 
-/* total applicants, success rate, interviews, open positions */
-export const dynamic = "force-dynamic";
+export default async function page({ searchParams }: { searchParams: { newUser: string /* newUser=true */ } }) {
+    /* first time user */
+    if (searchParams.newUser === "true") {
+        const supabase = createClient();
+        const {
+            data: { user },
+        } = await supabase.auth.getUser();
+        const userFirstName = user?.user_metadata.name?.split(" ")[0];
 
-export default async function page() {
+        return (
+            <div className="flex flex-col justify-between items-center h-full w-full py-8">
+                <h2 className="text-3xl font-bold tracking-tight p-4">Hi {userFirstName}, Welcome to Tactix 👋</h2>
+                <Link
+                    href={"./dashboard/jobs/new"}
+                    className="bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 rounded-lg"
+                >
+                    Create your first Job
+                </Link>
+                <div className="flex items-center justify-center object-cover h-full w-full">
+                    <NewUser className="h-[700px] w-[900px]" />
+                </div>
+            </div>
+        );
+    }
+
     /* fetch data for dashboard */
     const supabase = createClient();
     let totalApplicants = 0;

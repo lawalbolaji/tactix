@@ -12,7 +12,7 @@ export function UserNav() {
             <DropdownMenuTrigger asChild>
                 <Button variant="ghost" className="relative h-8 w-8 rounded-full">
                     <Avatar className="h-8 w-8">
-                        <AvatarImage src={"https://placehold.co/32x32/orange/white?text=RL"} alt={"Rasheed"} />
+                        <AvatarImage src={"https://placehold.co/32x32/CAB26D/white?text=RL"} alt={"Rasheed"} />
                         <AvatarFallback>{""}</AvatarFallback>
                     </Avatar>
                 </Button>
