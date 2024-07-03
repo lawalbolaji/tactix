@@ -10,6 +10,7 @@ import { Employment, EmploymentTypeSelect } from "./employment-type";
 import { Experience, ExperienceSelect } from "./experience";
 import { Editor } from "./rooteditor/editor";
 import { SubmitButton } from "./submitbtn";
+import { DatePickerDemo } from "./choose-date";
 
 export function NewJobForm() {
     const [title, setTitle] = useState("");
@@ -18,6 +19,7 @@ export function NewJobForm() {
     const [salary, setSalary] = useState("");
     const [qualifications, setQualifications] = useState("");
     const [location, setLocation] = useState("");
+    const [date, setDate] = useState<Date>();
 
     return (
         <form action={createNewJobPosting}>
@@ -94,6 +96,7 @@ export function NewJobForm() {
                             </div>
 
                             <div className="grid grid-cols-2 gap-4">
+                                {/* TODO: swap with autocomplete from google */}
                                 <div className="grid gap-3">
                                     <Label htmlFor="location">Location</Label>
                                     <Input
@@ -106,19 +109,21 @@ export function NewJobForm() {
                                         required
                                         aria-required
                                         type="text"
-                                        placeholder="Contract"
+                                        placeholder="Lagos, Nigeria"
                                     />
                                 </div>
                                 <div className="grid gap-3">
                                     <Label htmlFor="expires_at">Job expiry date</Label>
-                                    <Input
-                                        id="expires_at"
-                                        name="expires_at"
-                                        required
-                                        aria-required
+                                    <input
                                         type="text"
-                                        placeholder="tomorrow"
+                                        name="expires_at"
+                                        id="expires_at"
+                                        value={date?.toISOString() ?? ""}
+                                        onChange={() => {}}
+                                        hidden
+                                        aria-hidden
                                     />
+                                    <DatePickerDemo {...{ date, setDate }} />
                                 </div>
                             </div>
                         </fieldset>

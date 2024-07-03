@@ -60,7 +60,6 @@ export async function createNewJobPosting(formData: FormData) {
             author_id: user.id,
             is_published: true,
             company,
-            expires_at: randomDate(new Date(2024, 0, 1), new Date(2025, 0, 1)).toISOString(),
         },
     ]);
     if (dbError) {
