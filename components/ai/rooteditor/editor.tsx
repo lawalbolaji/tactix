@@ -78,7 +78,6 @@ export function GenerateButton(props: GenerateButtonProps) {
         const removeUpdateListener = editor.registerUpdateListener(({ editorState }) => {
             editorState.read(() => {
                 const markdown = $convertToMarkdownString(undefined, undefined, true);
-                console.log(markdown);
                 setDescription(markdown);
             });
         });
@@ -87,7 +86,14 @@ export function GenerateButton(props: GenerateButtonProps) {
 
     return (
         <>
-            <textarea name="description" hidden aria-hidden value={description} className="whitespace-pre-wrap" />
+            <textarea
+                name="description"
+                hidden
+                aria-hidden
+                value={description}
+                onChange={() => {}}
+                className="whitespace-pre-wrap"
+            />
             <Button
                 variant="outline"
                 className="absolute right-6 top-6 z-10 flex items-center justify-center"

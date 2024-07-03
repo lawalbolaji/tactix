@@ -15,7 +15,15 @@ export function EmploymentTypeSelect(props: {
     return (
         <>
             <Label htmlFor="employment_type">Employment type</Label>
-            <input type="text" hidden aria-hidden name="employment_type" required value={employmentType} />
+            <input
+                type="text"
+                hidden
+                aria-hidden
+                name="employment_type"
+                onChange={() => {}}
+                required
+                value={employmentType}
+            />
             <Select
                 onValueChange={(val) => {
                     setEmploymentType(val as Employment);

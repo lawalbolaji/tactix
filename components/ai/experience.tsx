@@ -14,7 +14,7 @@ export function ExperienceSelect(props: {
     return (
         <>
             <Label htmlFor="experience">Experience</Label>
-            <input type="text" hidden aria-hidden name="experience" value={props.experienceLevel} />
+            <input type="text" hidden aria-hidden name="experience" onChange={() => {}} value={props.experienceLevel} />
             <Select
                 onValueChange={(val) => {
                     props.setExperienceLevel(val as Experience);
