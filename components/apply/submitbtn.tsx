@@ -16,7 +16,7 @@ export function SubmitButton() {
                 {pending ? (
                     <div className="h-5 w-5 animate-spin rounded-full border-4 border-gray-300 border-t-[#d099d750]" />
                 ) : (
-                    "Apply"
+                    "Submit Application"
                 )}
             </button>
         </div>
