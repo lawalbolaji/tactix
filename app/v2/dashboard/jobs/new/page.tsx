@@ -1,4 +1,4 @@
-import { NewJobForm } from "../../../../../components/ai/new-job-forms";
+import { NewJobForm } from "@/components/ai/new-job-forms";
 
 export default async function CreateNewJobPage() {
     return (
