@@ -47,6 +47,8 @@ export async function createNewJobPosting(formData: FormData) {
         error: authError,
     } = await supabase.auth.getUser();
 
+    const company = user?.user_metadata.company_name || null;
+
     if (authError || !user) {
         return { error: { message: "unauthorized!" } };
     }
@@ -57,6 +59,7 @@ export async function createNewJobPosting(formData: FormData) {
             ...data,
             author_id: user.id,
             is_published: true,
+            company,
             expires_at: randomDate(new Date(2024, 0, 1), new Date(2025, 0, 1)).toISOString(),
         },
     ]);

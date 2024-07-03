@@ -16,8 +16,10 @@ export default async function ViewJobPage({ params }: { params: { id: number } }
         .from("jobs")
         .select(
             `
+            title,
             description,
-            location
+            location,
+            company
             `
         )
         .eq("id", jobId)
@@ -34,8 +36,10 @@ export default async function ViewJobPage({ params }: { params: { id: number } }
     return (
         <div className="flex flex-col items-center justify-center p-8">
             <div className="flex flex-col items-center justify-center my-8">
-                <h1 className="text-3xl font-bold">Senior Software Engineer, Globacom</h1>
-                <p className="text-sm p-2 font-semibold">Location: Ontario, Canada</p>
+                <h1 className="text-3xl font-bold">
+                    {job.title}, {job.company ?? "Acme inc."}
+                </h1>
+                <p className="text-sm p-2 font-semibold">{job.location}</p>
             </div>
             <div className="prose">
                 <MDXRemote source={job.description} />
