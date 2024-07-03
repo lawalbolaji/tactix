@@ -1,7 +1,7 @@
 import { MDXRemote } from "next-mdx-remote/rsc";
 import Link from "next/link";
-import { createClient } from "../../../../../lib/supabase/server";
 import { notFound } from "next/navigation";
+import { createClient } from "../../../../../lib/supabase/server";
 import { z } from "zod";
 
 export default async function ViewJobPage({ params }: { params: { id: number } }) {
@@ -14,14 +14,7 @@ export default async function ViewJobPage({ params }: { params: { id: number } }
     const supabase = createClient();
     const { data: job, error } = await supabase
         .from("jobs")
-        .select(
-            `
-            title,
-            description,
-            location,
-            company
-            `
-        )
+        .select("description")
         .eq("id", jobId)
         .eq("is_published", true)
         .eq("is_deleted", false)
@@ -34,13 +27,7 @@ export default async function ViewJobPage({ params }: { params: { id: number } }
     }
 
     return (
-        <div className="flex flex-col items-center justify-center p-8">
-            <div className="flex flex-col items-center justify-center my-8">
-                <h1 className="text-3xl font-bold">
-                    {job.title}, {job.company ?? "Acme inc."}
-                </h1>
-                <p className="text-sm p-2 font-semibold">{job.location}</p>
-            </div>
+        <>
             <div className="prose">
                 <MDXRemote source={job.description} />
             </div>
@@ -52,6 +39,6 @@ export default async function ViewJobPage({ params }: { params: { id: number } }
                     Apply
                 </Link>
             </div>
-        </div>
+        </>
     );
 }
