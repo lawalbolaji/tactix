@@ -25,6 +25,8 @@ export default async function page() {
         data: { user },
     } = await supabase.auth.getUser();
 
+    const nameOfUser = user?.user_metadata.name?.split(" ")[0];
+
     /* total applicants, total interviews, open positions */
     const asyncJobs = [];
     const countApplicantsAsync = supabase
@@ -102,7 +104,9 @@ export default async function page() {
         <ScrollArea className="h-full">
             <div className="flex-1 space-y-4 p-4 pt-6 md:p-8">
                 <div className="flex items-center justify-between space-y-2">
-                    <h2 className="text-3xl font-bold tracking-tight">Hi, Welcome back 👋</h2>
+                    <h2 className="text-3xl font-bold tracking-tight">
+                        Hi{nameOfUser ? " " + nameOfUser : ""}, Welcome back 👋
+                    </h2>
                     <div className="hidden items-center space-x-2 md:flex hover:font-semibold hover:text-[#38461e]">
                         <Link href="./dashboard/jobs/new">+ Create Job</Link>
                     </div>
