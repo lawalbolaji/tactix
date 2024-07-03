@@ -9,6 +9,7 @@ import { ArrowUpRightIcon, FileSearchIcon } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 
 /* total applicants, success rate, interviews, open positions */
+export const dynamic = "force-dynamic";
 
 export default async function page() {
     /* fetch data for dashboard */
