@@ -7,6 +7,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowUpRightIcon, FileSearchIcon } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
+import { format } from "date-fns";
 
 /* total applicants, success rate, interviews, open positions */
 export const dynamic = "force-dynamic";
@@ -17,6 +18,7 @@ export default async function page() {
     let totalApplicants = 0;
     let totalInterviews = 0;
     let totalOpenPositions = 0;
+    let totalJobsCreatedThisMonth = 0;
     let jobs: Array<any> | null = [];
 
     const {
@@ -57,24 +59,41 @@ export default async function page() {
         .eq("is_deleted", false)
         .order("created_at", { ascending: false })
         .range(0, 3);
+
+    const firstDateOfMonth = format(new Date(), "yyyy-MM-01");
+    const getJobsCreatedThisMonthAsync = supabase
+        .from("jobs")
+        .select("*", { count: "exact", head: true })
+        .gt("created_at", firstDateOfMonth);
+
+    /* DO NOT CHANGE THE ORDER OF THE JOBS */
     asyncJobs.push(countApplicantsAsync);
     asyncJobs.push(countInterviewsAsync);
     asyncJobs.push(countOpenPositionsAsync);
     asyncJobs.push(fetchJobsAsync);
+    asyncJobs.push(getJobsCreatedThisMonthAsync);
 
-    const [countApplicantsResult, countInterviewsResult, countOpenPositionsResult, fetchJobsResult] =
-        await Promise.allSettled(asyncJobs);
+    const [
+        countApplicantsResult,
+        countInterviewsResult,
+        countOpenPositionsResult,
+        fetchJobsResult,
+        jobCreatedThisMonthResult,
+    ] = await Promise.allSettled(asyncJobs);
 
+    /* the supabase client always fulfills the promise; if an error occurs, it fulfills with an error value  */
     if (
         fetchJobsResult.status === "fulfilled" &&
         countApplicantsResult.status === "fulfilled" &&
         countOpenPositionsResult.status === "fulfilled" &&
-        countInterviewsResult.status === "fulfilled"
+        countInterviewsResult.status === "fulfilled" &&
+        jobCreatedThisMonthResult.status === "fulfilled"
     ) {
         jobs = fetchJobsResult.value.data;
         totalApplicants = countApplicantsResult.value.count ?? 0;
         totalInterviews = countInterviewsResult.value.count ?? 0;
         totalOpenPositions = countOpenPositionsResult.value.count ?? 0;
+        totalJobsCreatedThisMonth = jobCreatedThisMonthResult.value.count ?? 0;
     }
 
     const successRate = Math.floor((totalInterviews / totalApplicants) * 100);
@@ -198,10 +217,13 @@ export default async function page() {
                                 <CardHeader className="flex flex-row items-center">
                                     <div className="grid gap-2">
                                         <CardTitle>Recent Jobs</CardTitle>
-                                        <CardDescription>You created 5 jobs this month.</CardDescription>
+                                        <CardDescription>
+                                            You created {totalJobsCreatedThisMonth} job
+                                            {totalJobsCreatedThisMonth > 1 ? "s" : ""} this month.
+                                        </CardDescription>
                                     </div>
                                     <Button asChild size="sm" className="ml-auto gap-1">
-                                        <Link href="./dashboard/jobs" prefetch={false}>
+                                        <Link href="./dashboard/jobs">
                                             View All
                                             <ArrowUpRightIcon className="h-4 w-4" />
                                         </Link>
