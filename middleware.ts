@@ -2,8 +2,9 @@ import { NextResponse, type NextRequest } from "next/server";
 import { updateSession } from "@/lib/supabase/middleware";
 
 export async function middleware(request: NextRequest) {
+    // No need for token refresh for login and register pages
     if (request.nextUrl.pathname === "/" || request.nextUrl.pathname === "/v2/register") return NextResponse.next();
-    console.log("auth session refreshed from %s", request.ip);
+    console.log("auth session refreshed from %s for path: %s", request.ip, request.nextUrl.pathname);
 
     return await updateSession(request);
 }
