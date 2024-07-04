@@ -20,6 +20,7 @@ export type Application = {
     coverLetter: string;
     score: number;
     rationale: string;
+    years_of_experience: number;
 };
 
-export type ApplicationList = Array<Pick<Application, "id" | "name" | "score" | "rationale">>;
+export type ApplicationList = Array<Pick<Application, "id" | "name" | "score" | "rationale" | "years_of_experience">>;

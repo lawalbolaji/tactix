@@ -24,6 +24,7 @@ export default async function ApplicationDetailsPage({ params }: { params: { id:
             resume_uri,
             cover_letter,
             additional_info,
+            years_of_experience,
             jobs (title)
         `
         )
@@ -119,7 +120,8 @@ export default async function ApplicationDetailsPage({ params }: { params: { id:
                             <div className="flex flex-col items-center justify-center gap-1">
                                 <p className="text-gray-500 text-sm w-full">
                                     <BriefcaseIcon className="w-4 h-4 inline-block mr-2" />
-                                    5+ years as a {(application.jobs as unknown as { title: string }).title}
+                                    {application.years_of_experience}+ years as a{" "}
+                                    {(application.jobs as unknown as { title: string }).title}
                                 </p>
                                 <p className="text-gray-500 text-sm w-full">
                                     <BuildingIcon className="w-4 h-4 inline-block mr-2" />

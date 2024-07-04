@@ -22,6 +22,7 @@ export default async function ApplicationsPage({ params }: { params: { id: strin
             name,
             score,
             rationale,
+            years_of_experience,
             jobs (title)
         `
         )
@@ -69,15 +70,15 @@ export default async function ApplicationsPage({ params }: { params: { id: strin
                                                 <div>
                                                     <h3 className="text-lg font-semibold">{applicant.name}</h3>
                                                     <p className="text-sm text-gray-500">
-                                                        {Math.floor(Math.random() * 8) + 4}+ years of experience
+                                                        {applicant.years_of_experience}+ years of experience
                                                     </p>
                                                 </div>
                                             </div>
                                             <p className="text-sm text-gray-500 line-clamp-3">
-                                                {applicant.name.split(" ")[0]} is an experienced software engineer with
-                                                a strong background in full-stack web development. He has a proven track
-                                                record of delivering high-quality, scalable applications and has
-                                                expertise in React, Node.js, and cloud infrastructure.
+                                                {applicant.name.split(" ")[0]} is an experienced professional with a
+                                                strong background as a {jobTitle}. He has a proven track record of
+                                                delivering high-quality, work and has expertise in that can drive
+                                                organizations forward.
                                             </p>
                                             <div className="flex items-center gap-2">
                                                 {Array.from(Array(5).keys()).map((_, idx) => (
