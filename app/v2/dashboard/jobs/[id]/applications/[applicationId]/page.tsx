@@ -1,12 +1,10 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Separator } from "@/components/ui/separator";
-import { Button } from "@/components/ui/button";
 import { BriefcaseIcon } from "@/components/shared/icons/briefcase";
 import { BuildingIcon } from "@/components/shared/icons/building";
-import Image from "next/image";
 import { createClient } from "@/lib/supabase/server";
 import { notFound } from "next/navigation";
-import { CheckCheck, Download, FolderDown, Linkedin, Mail, Trash2 } from "lucide-react";
+import { CheckCheck, Linkedin, Mail, Trash2 } from "lucide-react";
 import Link from "next/link";
 import { TriggerApplicationActionBtn } from "@/components/applications/actionbtn";
 import { UpdateApplicationStatus } from "./action";
@@ -45,19 +43,6 @@ export default async function ApplicationDetailsPage({ params }: { params: { id:
     const rejectApplication = UpdateApplicationStatus.bind(null, { type: "reject", applicationId });
     const approveApplication = UpdateApplicationStatus.bind(null, { type: "approve", applicationId });
     const [applicantFirstName, applicantLastName] = application.name.split(" ");
-
-    console.log(application);
-
-    /*
-    name: formData.get("firstname") + " " + formData.get("lastname"),
-            email: formData.get("email"),
-            cover_letter: formData.get("cover_letter"),
-            additional_info: formData.get("additional_info"),
-            linkedin: formData.get("linkedin"),
-            portfolio: formData.get("portfolio"),
-            location: formData.get("location"),
-            resume_uri: formData.get("resume"), 
-     */
     return (
         <div className="container mx-auto py-8 px-4 md:px-6">
             <div className="flex flex-col md:flex-row items-center justify-between mb-6">
