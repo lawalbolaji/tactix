@@ -11,7 +11,7 @@ export function FileUploader() {
             <label htmlFor="resume" className="block text-sm font-medium leading-6 text-gray-900">
                 CV / Resume
             </label>
-            <input type="text" hidden aria-hidden name="resume" value={resumeUri} />
+            <input type="text" hidden aria-hidden name="resume" onChange={() => {}} value={resumeUri} />
             <div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
                 <UploadButton
                     endpoint="pdfUploader"
