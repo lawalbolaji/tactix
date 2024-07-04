@@ -129,7 +129,7 @@ export default async function page({ searchParams }: { searchParams: { newUser: 
                     <h2 className="text-3xl font-bold tracking-tight">
                         Hi{nameOfUser ? " " + nameOfUser : ""}, Welcome back 👋
                     </h2>
-                    <div className="hidden items-center space-x-2 md:flex hover:font-semibold hover:text-[#38461e]">
+                    <div className="hidden items-center space-x-2 md:flex hover:font-semibold hover:text-[#38461e] border rounded-lg p-4 hover:bg-accent hover:text-accent-foreground font-semibold">
                         <Link href="./dashboard/jobs/new">+ Create Job</Link>
                     </div>
                 </div>

@@ -57,10 +57,8 @@ export default async function JobsPage({ searchParams }: { searchParams: { offse
                     <CardTitle>Job Postings</CardTitle>
                     <CardDescription>All job postings you&apos;ve created.</CardDescription>
                 </CardHeader>
-                <div className="hidden items-center space-x-2 md:flex lg:mr-16 px-4 py-2 hover:font-semibold hover:text-[#38461e]">
-                    <Link href="./jobs/new" className="">
-                        + Create Job
-                    </Link>
+                <div className="hidden items-center space-x-2 md:flex hover:font-semibold hover:text-[#38461e] border rounded-lg p-4 hover:bg-accent hover:text-accent-foreground font-semibold mr-24">
+                    <Link href="./jobs/new">+ Create Job</Link>
                 </div>
             </div>
             <CardContent style={{ border: "none" }}>
