@@ -22,7 +22,7 @@ export default function ApplyForJobPage({ params }: { params: { id: string } }) 
             linkedin: z.string().url(),
             portfolio: z.string().url(),
             location: z.string(),
-            resume_uri: z.string(),
+            resume_uri: z.string().min(1),
         });
 
         const {
