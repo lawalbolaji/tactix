@@ -13,6 +13,9 @@ export default function Header() {
                         <Rabbit className="h-6 w-6 mr-2" />
                     </Link>
                 </div>
+                <div className="hidden lg:block">
+                    <div className="flex items-center justify-center font-bold tracking-widest text-lg">Tactix</div>
+                </div>
                 <div className={cn("block lg:!hidden")}>
                     <MobileSidebar />
                 </div>
