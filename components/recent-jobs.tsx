@@ -43,8 +43,6 @@ export function RecentJobPostings(props: { jobs: Array<any> | null }) {
                                     <DropdownMenuLabel className="font-bold">Actions</DropdownMenuLabel>
                                     {/* create job url based on job id */}
                                     <CopyJobUrlStatic jobId={job.id} />
-                                    {/* this should call a server action to update the jobStatus */}
-                                    <DropdownMenuItem>Publish</DropdownMenuItem>
 
                                     {/* delete job with server action */}
                                     <DropdownMenuItem>Delete</DropdownMenuItem>
