@@ -6,13 +6,20 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem,
 import Link from "next/link";
 
 /* profileImageUri, username, email,  */
-export function UserNav() {
+export function UserNav(props: { username: string | undefined }) {
+    const firstNameInitial =
+        props.username?.split(" ")[0]?.[0] ??
+        "R"; /* default user is rasheed to accommodate some of the old staging data */
+    const lastNameInitial = props.username?.split(" ")[1]?.[0] ?? "L";
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
                 <Button variant="ghost" className="relative h-8 w-8 rounded-full">
                     <Avatar className="h-8 w-8">
-                        <AvatarImage src={"https://placehold.co/32x32/CAB26D/white?text=RL"} alt={"Rasheed"} />
+                        <AvatarImage
+                            src={`https://placehold.co/32x32/CAB26D/white?text=${firstNameInitial}${lastNameInitial}`}
+                            alt={"Rasheed"}
+                        />
                         <AvatarFallback>{""}</AvatarFallback>
                     </Avatar>
                 </Button>
