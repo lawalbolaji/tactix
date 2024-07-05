@@ -5,9 +5,9 @@ import { signIn } from "@/app/action";
 import { Label } from "../ui/label";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
-import { Github } from "../ui/icons/github";
 import { Chrome } from "../ui/icons/chrome";
 import Link from "next/link";
+import { Linkedin } from "lucide-react";
 
 const initialState = {
     error: {
@@ -64,16 +64,14 @@ export function SignIn() {
                         <div className="w-full border-t border-gray-300" />
                     </div>
                     <div className="relative flex justify-center text-sm">
-                        <span className="bg-white px-2 text-gray-500">
-                            or continue with
-                        </span>
+                        <span className="bg-white px-2 text-gray-500">or continue with</span>
                     </div>
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
                     <Button variant="outline" size={"lg"} type="button">
-                        <Github className="mr-2 h-5 w-5" />
-                        GitHub
+                        <Linkedin className="mr-2 h-5 w-5" />
+                        Linkedin
                     </Button>
                     <Button variant="outline" size={"lg"} type="button">
                         <Chrome className="mr-2 h-5 w-5" />
